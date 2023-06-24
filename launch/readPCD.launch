@@ -1,0 +1,10 @@
+<launch>
+    <!--  -->
+    <node pkg="read_pcd" type="readPCD" name="readPCD" output="screen" > 
+        <param name="folder_path" type="string" value="/media/nas/RIClShare/DataSets/KITTI_ODOMETRY_LIDAR/00_pcds/00/pcd2/"/> 
+        <remap from="/pcd_topic" to="/velodyne_points"/><!--/points_raw -->
+    </node>
+
+    
+
+</launch>

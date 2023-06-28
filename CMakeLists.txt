@@ -27,6 +27,7 @@ find_package(Ceres REQUIRED)
 
 find_package(OpenMP REQUIRED)
 find_package(Boost REQUIRED COMPONENTS filesystem)
+#find_package(LASlib REQUIRED  src/read_pcd/3rdLibrary/LAStools/build/cmake_install.cmake)
 
 include_directories(
   include
@@ -50,5 +51,5 @@ catkin_package(
 
 
 
-add_executable(readPCD src/readPCD.cpp)
-target_link_libraries(readPCD ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${Boost_LIBRARIES})
+add_executable(readPCD src/readPCD.cpp include/ground_plane_fitting.cpp)
+target_link_libraries(readPCD ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${Boost_LIBRARIES})# src/read_pcd/3rdLibrary/LAStools/LASlib/lib/libLASlib.a

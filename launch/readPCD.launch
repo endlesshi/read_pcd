@@ -1,9 +1,17 @@
 <launch>
     <!--  -->
     <node pkg="read_pcd" type="readPCD" name="readPCD" output="screen" > 
+        <!-- <param name="folder_path" type="string" value="/EXTERNAL/datasets/SLAM2023/XA_train/202210131557/PointClouds/"/>  -->
         <param name="folder_path" type="string" value="/media/nas/RIClShare/DataSets/KITTI_ODOMETRY_LIDAR/00_pcds/00/pcd2/"/> 
+        <param name="isBin" type="bool" value="false"/><!--true is .bin; false is .pcd -->
         <remap from="/pcd_topic" to="/velodyne_points"/><!--/points_raw -->
     </node>
+
+    <!--- Run Rviz-->
+    <arg name="rviz" default="true" /><!--//true-->
+    <group if="$(arg rviz)">
+        <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find read_pcd)/rviz/segmentation.rviz" />
+    </group>
 
     
 
